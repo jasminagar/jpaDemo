@@ -62,4 +62,5 @@ public class CourseDao {
             em.close();
         }
     }
+
 }

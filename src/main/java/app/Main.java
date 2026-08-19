@@ -14,12 +14,20 @@ public class Main {
 
 //        Person person1 = new Person("karen", 43);
 //        personDao.createPerson(person1);
-//
 //   Person person2 = new Person("karen", 44);
 //personDao.createPerson(person2);
 
-       List<Person> allPersons = personDao.findAllPersons();
-    System.out.println(allPersons);
+//       List<Person> allPersons = personDao.findAllPersons();
+//    System.out.println(allPersons);
+
+//        Course course1 = new Course("java");
+//        Course course2 = new Course("sql");
+//
+//        courseDao.createCourse(course1);
+//        courseDao.createCourse(course2);
+//
+//        List<Course> alCourses = courseDao.findAllCourses();
+//        System.out.println(alCourses);
 
     }
 }
