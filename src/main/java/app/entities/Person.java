@@ -11,8 +11,7 @@ import lombok.*;
 @ToString
 @Entity
 public class Person {
-    @Id
-    private int id;
+    private @Id int id;
     private String name;
     private int age;
 

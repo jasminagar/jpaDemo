@@ -10,10 +10,6 @@ public class Main {
         PersonDao personDao = new PersonDao();
         CourseDao courseDao = new CourseDao();
 
-        Course course = new Course("java");
-
-        courseDao.createCourse(course);
-
 
     }
 }
