@@ -6,6 +6,8 @@ import app.exceptions.ApiException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
+import java.util.List;
+
 public class PersonDao {
     private EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
 
@@ -15,9 +17,10 @@ public class PersonDao {
             em.getTransaction().begin();
             em.persist(person);
             em.getTransaction().commit();
+        }catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             em.close();
-        } catch (ApiException e) {
-            e.getLocalizedMessage();
         }
     }
 
@@ -38,4 +41,26 @@ public class PersonDao {
             e.getCode();
         }
     }
+
+    public void deleteStudent(int id){
+        EntityManager em = emf.createEntityManager();
+        try{
+            em.getTransaction().begin();
+            Person person = em.find(Person.class, id);
+            em.remove(person);
+            em.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+public List<Person> findAllPersons(){
+        EntityManager em = emf.createEntityManager();
+        try{
+            return em.createQuery("select p from Person p", Person.class)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+}
+
 }
