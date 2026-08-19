@@ -1,5 +1,6 @@
 package app.config;
 
+import app.entities.Course;
 import app.entities.Person;
 import org.hibernate.cfg.Configuration;
 
@@ -11,5 +12,6 @@ final class EntityRegistry {
        // configuration.addAnnotatedClass(Study.class);
         // TODO: Add more entities here...
         configuration.addAnnotatedClass(Person.class);
+        configuration.addAnnotatedClass(Course.class);
     }
 }

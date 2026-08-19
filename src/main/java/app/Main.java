@@ -1,14 +1,19 @@
 package app;
 
+import app.dao.CourseDao;
 import app.dao.PersonDao;
+import app.entities.Course;
 import app.entities.Person;
 
 public class Main {
     public static void main(String[] args) {
         PersonDao personDao = new PersonDao();
-        Person person = new Person("Doe", 25);
+        CourseDao courseDao = new CourseDao();
 
-        personDao.createPerson(person);
+        Course course = new Course("java");
+
+        courseDao.createCourse(course);
+
 
     }
 }
