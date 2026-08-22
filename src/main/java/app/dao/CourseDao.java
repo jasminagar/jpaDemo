@@ -12,6 +12,25 @@ import java.util.List;
 public class CourseDao {
     private EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
 
+    public List<Person> studentsByCourse(Course course) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            List<Person> students = em.createQuery(
+                    "SELECT p FROM Person p",
+                    Person.class
+            ).getResultList();
+
+            return students.stream()
+                    .filter(person -> person.getCourses().stream()
+                            .anyMatch(c -> c.getId() == (course.getId())))
+                    .toList();
+
+        } finally {
+            em.close();
+        }
+    }
+
     public List<Course> courseByPerson(Person person) {
         EntityManager em = emf.createEntityManager();
 

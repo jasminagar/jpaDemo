@@ -18,7 +18,7 @@ public class Person {
     private int id;
     private String name;
     private int age;
-    private int phoneNumber;
+    private Integer phoneNumber;
     private String email;
     private String adress;
     private String status;
@@ -40,5 +40,14 @@ public class Person {
     }
 
     public Person(String hanne, int i, int i1, String mail, String adres, String taber, LocalDate now, LocalDate now1) {
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
