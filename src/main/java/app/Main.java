@@ -13,11 +13,12 @@ public class Main {
     public static void main(String[] args) {
         PersonDao personDao = new PersonDao();
         CourseDao courseDao = new CourseDao();
-        Person person = new Person("hanne", 2, 22222222, "mail", "adres", "taber", LocalDate.now(), LocalDate.now());
-        Course course = new Course("h");
-        personDao.createPerson(person);
-        courseDao.createCourse(course);
-        courseDao.addCouseToPerson(person, course);
+        Person person2 = new Person("hanne", 2, 22222222, "mail", "adres", "taber", LocalDate.now(), LocalDate.now());
+        Course course2 = new Course("");
+        personDao.createPerson(person2);
+        courseDao.createCourse(course2);
+        courseDao.addCouseToPerson(person2, course2);
+        System.out.println(courseDao.courseByPerson(person2));
 
     }
 }

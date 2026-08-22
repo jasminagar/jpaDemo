@@ -12,6 +12,22 @@ import java.util.List;
 public class CourseDao {
     private EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
 
+    public List<Course> courseByPerson(Person person) {
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            return em.createQuery(
+                            "select c from Person p join p.courses c where p.id = :personId",
+                            Course.class
+                    )
+                    .setParameter("personId", person.getId())
+                    .getResultList();
+
+        } finally {
+            em.close();
+        }
+    }
+
     public void addCouseToPerson(Person person1, Course course1){
         EntityManager em = emf.createEntityManager();
         try{

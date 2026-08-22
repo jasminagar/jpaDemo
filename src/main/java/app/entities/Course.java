@@ -12,7 +12,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 public class Course {
     @Id
@@ -25,9 +24,19 @@ public class Course {
     private String classRoom;
     private LocalTime timeOfCourse;
     @ManyToMany(mappedBy = "courses")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Person> students = new ArrayList<>();
 
     public Course(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

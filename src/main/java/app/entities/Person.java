@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Entity
 public class Person {
     @Id
@@ -31,6 +30,8 @@ public class Person {
             joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private List<Course> courses = new ArrayList<>();
 
     public Person(String name, int age) {
