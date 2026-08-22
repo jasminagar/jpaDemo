@@ -1,11 +1,12 @@
 package app.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,6 +19,13 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @ManyToOne
+    private Teacher teacher;
+    private int semester;
+    private String classRoom;
+    private LocalTime timeOfCourse;
+    @ManyToMany(mappedBy = "courses")
+    private List<Person> students = new ArrayList<>();
 
     public Course(String name) {
         this.name = name;

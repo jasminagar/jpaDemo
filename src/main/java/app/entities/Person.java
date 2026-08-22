@@ -1,10 +1,11 @@
 package app.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,9 +19,25 @@ public class Person {
     private int id;
     private String name;
     private int age;
+    private int phoneNumber;
+    private String email;
+    private String adress;
+    private String status;
+    private LocalDate dateOfBirth;
+    private LocalDate dateOfEnrollment;
+    @ManyToMany
+    @JoinTable(
+            name = "person_course",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses = new ArrayList<>();
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String hanne, int i, int i1, String mail, String adres, String taber, LocalDate now, LocalDate now1) {
     }
 }
